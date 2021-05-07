@@ -1,0 +1,46 @@
+jenkins:
+  numExecutors: 0
+  remotingSecurity:
+    enabled: true
+beekeeper:
+  enabled: true
+  securityWarnings:
+    enabledForCore: true
+    enabledForPlugins: true
+  upgrades:
+    autoDowngradePlugins: false
+    autoUpgradePlugins: false
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+    - simpleBuildDiscarder:
+        discarder:
+          logRotator:
+            daysToKeepStr: "30"
+  globalLibraries:
+    libraries:
+    - defaultVersion: "main"
+      name: "pipeline-library-demo"
+      retriever:
+        modernSCM:
+          scm:
+            github:
+              configuredByUrl: true
+              id: "3608af51-2e44-4257-9401-08b6fb4e82bc"
+              repoOwner: "rkivisto"
+              repository: "pipeline-library-demo"
+              repositoryUrl: "https://github.com/rkivisto/pipeline-library-demo.git"
+              traits:
+              - gitHubBranchDiscovery:
+                  strategyId: 1
+              - gitHubPullRequestDiscovery:
+                  strategyId: 1
+              - gitHubForkDiscovery:
+                  strategyId: 1
+                  trust: "gitHubTrustPermissions"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
